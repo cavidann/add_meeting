@@ -2,7 +2,7 @@ var days = document.getElementById("days");
 var start_minute = document.getElementById("first");
 var end_minute = document.getElementById("second");
 var add = document.getElementById("add");
-var list=document.getElementById("list");
+var list = document.getElementById("list");
 
 // creating options
 for (i = 1; i <= 12; i++) {
@@ -21,14 +21,14 @@ for (i = 1; i <= 12; i++) {
 // creating options
 
 // interactive day choosing
-var week_length=days.children.length;
+var week_length = days.children.length;
 
-days.addEventListener("change", function(){
-    for(i = 0; i <= week_length-1; i++) {
-        this.children[i].style.display="block";
+days.addEventListener("change", function () {
+    for (i = 0; i <= week_length - 1; i++) {
+        this.children[i].style.display = "block";
     }
-    var selected_day = this.options[this.selectedIndex].style.display="none";
-    
+    var selected_day = this.options[this.selectedIndex].style.display = "none";
+
 })
 // interactive day choosing
 
@@ -55,7 +55,7 @@ start_minute.addEventListener("change", function () {
 })
 
 // add button
-var j=0;
+var j = 0;
 add.addEventListener("click", function () {
     var added_day = days.options[days.selectedIndex].text;
     var added_start_minute = start_minute.options[start_minute.selectedIndex].text;
@@ -65,13 +65,20 @@ add.addEventListener("click", function () {
     var item_div = document.createElement("div");
     var att = document.createAttribute("id");
     j++;
-    att.value = "item"+j;
+    att.value = "item" + j;
     item_div.setAttributeNode(att);
- 
-    list.appendChild(item_div);
-    document.getElementById("item"+j).innerHTML="<b>"+added_day+"</b>"+"<span>" + added_start_minute +" - "+added_end_minute +"</span>"+"<a>remove</a><br>"; 
 
-    console.log(added_day + " " + added_start_minute + " - " + added_end_minute)
+    list.appendChild(item_div);
+    document.getElementById("item" + j).innerHTML = "<b>" + added_day + "</b>" + "<span>" + added_start_minute + " - " + added_end_minute + "</span>" + "<a>remove</a><br>";
+    // advices next day
+    var week_length = days.children.length;
+    var next_day=parseInt(days.options[days.selectedIndex].value)+1
+    if(next_day<=week_length-1){
+        days.selectedIndex=next_day
+    }else{
+        days.selectedIndex=0;
+    }
+    // advices next day
 })
 // add button
 
