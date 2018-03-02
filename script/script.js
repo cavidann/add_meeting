@@ -20,6 +20,17 @@ for (i = 1; i <= 12; i++) {
 }
 // creating options
 
+// interactive day choosing
+var week_length=days.children.length;
+
+days.addEventListener("change", function(){
+    for(i = 0; i <= week_length-1; i++) {
+        this.children[i].style.display="block";
+    }
+    var selected_day = this.options[this.selectedIndex].style.display="none";
+    
+})
+// interactive day choosing
 
 start_minute.addEventListener("change", function () {
 
@@ -34,7 +45,6 @@ start_minute.addEventListener("change", function () {
     if (num == 13) {
         num = 1;
     }
-    console.log(num)
     for (i = num; i <= 12; i++) {
         var option = document.createElement("Option");
         var t = document.createTextNode(i + ": 00 am");
