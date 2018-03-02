@@ -1,0 +1,10 @@
+b,span,a{
+float: left;    
+margin:0px!important;
+padding: 0px 3px;
+}
+a{
+    color:blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
